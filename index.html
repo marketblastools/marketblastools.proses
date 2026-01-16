@@ -1,230 +1,304 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-<link rel="manifest" href="/site.webmanifest">
-  <title>MARKETBLAST - Terminal tools blast</title>
-  <style>
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 40%, rgba(0, 212, 255, 1) 100%);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      margin: 0;
-      padding: 10px;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Order Form - Modern Processing</title>
 
-    .container {
-      background: #ffffffcc;
-      padding: 30px;
-      border-radius: 12px;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-      width: 100%;
-      max-width: 500px;
-    }
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
-    h2 {
-      text-align: center;
-      color: #333;
-      margin-bottom: 20px;
-    }
+<style>
+*{box-sizing:border-box;font-family:Poppins,sans-serif}
+body{
+margin:0;
+min-height:100vh;
+background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+display:flex;
+align-items:center;
+justify-content:center;
+color:#fff;
+}
 
-    label {
-      display: block;
-      margin-top: 15px;
-      font-weight: bold;
-    }
+.container{
+width:100%;
+max-width:500px;
+background:rgba(255,255,255,.08);
+backdrop-filter:blur(15px);
+border-radius:18px;
+padding:25px;
+box-shadow:0 20px 40px rgba(0,0,0,.4);
+animation:fadeIn .8s ease;
+}
 
-    input, select {
-      width: 100%;
-      padding: 10px;
-      margin-top: 5px;
-      border-radius: 5px;
-      border: 1px solid #ccc;
-      box-sizing: border-box;
-    }
+h2{text-align:center;margin-bottom:20px}
 
-    .btn {
-      margin-top: 20px;
-      padding: 12px;
-      width: 100%;
-      border: none;
-      border-radius: 8px;
-      font-size: 16px;
-      cursor: pointer;
-      box-sizing: border-box;
-    }
+form input,form select{
+width:100%;
+padding:12px 14px;
+border-radius:12px;
+border:none;
+outline:none;
+margin-bottom:12px;
+background: linear-gradient(to bottom, aqua, aquamarine);
 
-    .btn-enter {
-      background-image: linear-gradient(red, yellow);
-      color: white;
-    }
+color:#000;
+}
 
-    .btn-help {
-      background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 40%, rgba(0, 212, 255, 1) 100%);
-      color: white;
-    }
+form select option{color:#000}
 
-    .btn:hover {
-      opacity: 0.9;
-    }
+button{
+width:100%;
+padding:14px;
+border:none;
+border-radius:14px;
+font-size:15px;
+font-weight:600;
+cursor:pointer;
+transition:.3s;
+}
 
-    .loading-text {
-      display: none;
-      text-align: center;
-      margin-top: 15px;
-      color: #17a2b8;
-      font-weight: bold;
-    }
+.btn-submit{
+background:linear-gradient(135deg,#00f2fe,#4facfe);
+color:#000;
+}
 
-    .help-panel {
-      display: none;
-      background-color: #eef5ff;
-      padding: 15px;
-      border-radius: 8px;
-      margin-top: 15px;
-      border: 1px solid #cde;
-    }
+.btn-submit:hover{transform:scale(1.03)}
 
-    .help-panel h4 {
-      margin-top: 0;
-      color: #007bff;
-    }
+.info-btn{
+margin-bottom:12px;
+background:rgba(255,255,255,.15);
+color:#fff;
+}
 
-    .help-panel ul {
-      margin: 0;
-      padding-left: 20px;
-    }
+.info-box{
+display:none;
+background:rgba(0,0,0,.4);
+border-radius:12px;
+padding:12px;
+font-size:13px;
+margin-bottom:12px;
+animation:fadeIn .4s ease;
+}
 
-    @media (max-width: 600px) {
-      .container {
-        padding: 20px;
-      }
+.loading-screen,
+.process-screen,
+.result-screen{
+display:none;
+text-align:center;
+}
 
-      h2 {
-        font-size: 20px;
-      }
-    }
-  </style>
+.spinner{
+width:50px;
+height:50px;
+border:5px solid rgba(255,255,255,.2);
+border-top:5px solid #00f2fe;
+border-radius:50%;
+margin:20px auto;
+animation:spin 1s linear infinite;
+}
+
+.typing{
+font-size:15px;
+margin-top:20px;
+min-height:60px;
+white-space:pre-line;
+}
+
+.result{
+font-size:20px;
+font-weight:600;
+margin:20px 0;
+}
+
+.actions button{
+margin-top:10px;
+}
+
+.btn-premium{
+background:linear-gradient(135deg,#f7971e,#ffd200);
+color:#000;
+}
+
+.btn-back{
+background:rgba(255,255,255,.15);
+color:#fff;
+}
+
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes fadeIn{from{opacity:0;transform:translateY(15px)}to{opacity:1;transform:none}}
+
+@media(max-width:480px){
+.container{padding:20px}
+}
+</style>
 </head>
+
 <body>
 
-<div class="container">
-  <h2>MARKETBLA⚡T</h2> 
-  <h2>TOOLS BLAST TERMINAL</h2>
-  <form id="produkForm">
-    <label for="link-toko">Link Toko:</label>
-    <input type="text" id="link-toko" required placeholder="https://...">
+<div class="container" id="formScreen">
+<h2>MARKETBLA⚡T</h2>
 
-    <label for="link-produk">Link Produk:</label>
-    <input type="text" id="link-produk" required placeholder="https://...">
+<button type="button" class="info-btn" onclick="toggleInfo()">⚠ INFORMASI PENTING</button>
+<div class="info-box" id="infoBox">
+• Pastikan semua data valid<br>
+• Proses menyesuaikan prioritas<br>
+• Pastikan tidak meninggalkan halaman saat proses berlangsung<br>
+• Penggunaan optimal 4/24<br>
+• Performa viewer livestream bertahap<br>
+• Estimasi livestream tidak dibatasi<br>
+• Performa produk akan diketahui setelah 1x24 jam dari permintaan proses<br>
+• Gunakan jeda minimal 1 jam untuk project selanjutnya<br>
+• Gunakan signalmax (khusus golden/platinum member)<br>
+• Dilarang menggunakan link global<br>
+• Syarat dan ketentuan yang berlaku tidak dapat di ganggu gugat dengan alasan apapun
+</div>
 
-    <label for="produk">Pilih Kategori:</label>
-    <select id="produk" required>
-      <option value="">-- Pilih --</option>
-      <option value="Fashion">Fashion</option>
-      <option value="Elektronik">Elektronik</option>
-      <option value="Kecantikan">Kecantikan</option>
-      <option value="Digital">Digital</option>
-      <option value="KeperluanRumah">Keperluan Rumah</option>
-      <option value="Kesehatan">Kesehatan</option>
-      <option value="Jasa">Jasa</option>
-    </select>
+<form id="orderForm">
+<input required placeholder="Link Toko">
+<input required placeholder="Link Produk">
+<input required placeholder="Link Livestream">
 
-    <label for="marketplace">Pilih Provider:</label>
-    <select id="marketplace" required>
-      <option value="">-- Pilih --</option>
-      <option value="Shopee">Shopee</option>
-      <option value="Tiktok">Tiktok</option>
-      <option value="Lazada">Lazada</option>
-      <option value="Instagram">Instagram</option>
-      <option value="Facebook">Facebook</option>
-      <option value="Youtube">Youtube</option>
-      <option value="Wordpress">Wordpress</option>
-      <option value="Telegram">Telegram</option>
-      <option value="Tokopedia">Tokopedia</option>
-      <option value="LandingPage">Landing page</option>
-      <option value="Skype">Skype</option>
-      <option value="Snapchat">Snapchat</option>
-            <option value="Twitter">Twitter</option>
-      <option value="Blogger">Blogger</option>
-            <option value="Pinterest">Pinterest</option>
-      <option value="Lainnya">Lainnya</option>
-    </select>
+<select required>
+<option value="">Pilih Status</option>
+<option>Seller</option>
+<option>Affiliate</option>
+</select>
 
-    <label for="fitur">Fitur Tambahan:</label>
-    <select id="fitur" required>
-      <option value="">-- Pilih --</option>
-      <option value="Get Follower">Free order</option>
-      <option value="Gratis Ongkir">Gratis Ongkir</option>
-      <option value="Flash Sale">Flash Sale</option>
-      <option value="Auto Assist">Auto Assist</option>
-      <option value="Ulasan Produk">Preloved Produk</option>
-      <option value="Live Recording">Live Recording</option>
-      <option value="Ban komentar negatif">Thrifting Produk</option>
-      <option value="Naikkan Produk">Kredibilitas Produk</option>
-      <option value="Auto notif produk">Biaya admin 5.0%</option>
-      <option value="Get Viewer">Get Viewer (for livestream )</option>
-      <option value="Perluas Jangkauan">Perluas Jangkauan</option>
-      <option value="Iphone Cam">Iphone Cam</option>
-      <option value="Auto Diskon">Auto Diskon</option>
-      <option value="Sembunyikan komentar negatif">Validasi Brand S Mall</option>
-      <option value="Live dengan rekaman">Live dengan rekaman</option>
-      <option value="Tracking Order">Tracking Order</option>
-      <option value="Auto blast 4/24">Auto blast 4/24</option>
-      <option value="Semua Fitur">Semua Fitur</option>
-    </select>
+<select required>
+<option value="">Pilih Kategori</option>
+<option>Fashion</option>
+<option>Elektronik</option>
+<option>Kecantikan</option>
+<option>Gaming</option>
+</select>
 
-    <button type="button" class="btn btn-help" onclick="toggleHelp()">INFORMASI ⚠️</button>
-    <div class="help-panel" id="helpPanel">
-      <h4>Bantuan Teknis:</h4>
-      <ul>
-        <li>Input Link Produk</li>
-        <li>Input Link Livestream</li>
-        <li>Pilih Marketplace: Shopee, Tokopedia, Lazada Dll</li>
-        <li>Fitur Tambahan: Diskon, Flash Sale, Gratis Ongkir</li>
-        <li>Tunggu sampai beberapa saat maka link akan di proses</li>
-        <li>Jangan mengganti layar saat link sedang dalam proses</li>
-        <li>Saat link sudah selesai dalam proses anda bisa melanjutkan livestream jika di perlukan</li>
-        <li>Jika proses link terasa lambat karena signal anda bisa memggunakan signal max bawaan marketblast</li>
-        <li>Penggunaan recomended adalah 4 kali dalam 1 hari</li>
-        <li>Harap untuk menjaga tools marketblast dari orang lain yang bukan sesama pengguna marketblast</li>
-      </ul>
-    </div>
+<select required>
+<option value="">Platform Marketplace</option>
+<option>Shopee</option>
+<option>TikTok Shop</option>
+<option>Tokopedia</option>
+<option>Lazada</option>
+</select>
 
-    <button type="submit" class="btn btn-enter">Go Bla⚡t</button>
-    <div class="loading-text" id="loadingText">Memproses link...</div>
-  </form>
+<select required>
+<option value="">Pilih Fitur</option>
+<option>Boost Order</option>
+<option>Auto Viewer</option>
+<option>Live Interaction</option>
+<option>Premium Exposure</option>
+</select>
+
+<button class="btn-submit" type="submit">Go Blast</button>
+</form>
+</div>
+
+<!-- Loading -->
+<div class="container loading-screen" id="loadingScreen">
+<h2>Mengirim Data</h2>
+<div class="spinner"></div>
+<p>Mohon tunggu...</p>
+<p>Dalam antrian proses</p>
+</div>
+
+<!-- Process -->
+<div class="container process-screen" id="processScreen">
+<h2>Proses Sistem</h2>
+<div class="spinner"></div>
+<div class="typing" id="typingText"></div>
+</div>
+
+<!-- Result -->
+<div class="container result-screen" id="resultScreen">
+<h2>Hasil Verifikasi</h2>
+<div class="result" id="finalResult"></div>
+
+<div class="actions">
+<button class="btn-premium">Upgrade ke Premium</button>
+<button class="btn-back" onclick="location.reload()">Kembali ke Halaman Utama</button>
+</div>
 </div>
 
 <script>
-  function toggleHelp() {
-    const panel = document.getElementById('helpPanel');
-    panel.style.display = panel.style.display === 'block' ? 'none' : 'block';
-  }
+const form=document.getElementById("orderForm");
+const typingText=document.getElementById("typingText");
 
-  const form = document.getElementById('produkForm');
-  const loadingText = document.getElementById('loadingText');
+function toggleInfo(){
+document.getElementById("infoBox").style.display =
+document.getElementById("infoBox").style.display==="block"?"none":"block";
+}
 
-  form.addEventListener('submit', function (e) {
-    e.preventDefault();
+form.addEventListener("submit",e=>{
+e.preventDefault();
+document.getElementById("formScreen").style.display="none";
+document.getElementById("loadingScreen").style.display="block";
 
-    loadingText.style.display = 'block';
+setTimeout(()=>{
+document.getElementById("loadingScreen").style.display="none";
+document.getElementById("processScreen").style.display="block";
+startTyping();
+},20000);
+});
 
-    // Simulasi proses selama 2 detik
-    setTimeout(() => {
-      loadingText.style.display = 'none';
+const messages=[
+"Verifikasi data...",
+"Data ditemukan...",
+"Mengecek kelayakan...",
+"Mengirim notifikasi...",
+"Pengesahan data...",
+"Status member...",
+"Status tidak diketahui...",
+"Verifikasi data...",
+"Verifikasi data...",
+"Kelayakan 1%...",
+"Persetujuan server...",
+"Menunggu informasi...",
+"Hasil akhir proses..."
+];
 
-      // Redirect ke situs lain setelah selesai
-      window.location.href = "https://introapp-me.github.io/proseslinkon.id/"; // Ganti dengan URL target Anda
-    }, 2000);
-  });
+let index=0;
+
+function startTyping(){
+typingText.innerHTML="";
+index=0;
+typeMessage();
+}
+
+function typeMessage(){
+if(index>=messages.length){
+setTimeout(showResult,10000);
+return;
+}
+let msg=messages[index]+"\n";
+let i=0;
+let interval=setInterval(()=>{
+typingText.innerHTML+=msg[i];
+i++;
+if(i>=msg.length){
+clearInterval(interval);
+index++;
+setTimeout(typeMessage,500);
+}
+},40);
+}
+
+/* ===============================
+   DEVELOPER RESULT CONTROL
+   =============================== */
+
+// true  = DISETUJUI
+// false = TIDAK DISETUJUI
+const MANUAL_APPROVAL = false; // <-- UBAH DI SINI SAJA
+
+function showResult(){
+document.getElementById("processScreen").style.display="none";
+document.getElementById("resultScreen").style.display="block";
+
+document.getElementById("finalResult").innerHTML =
+MANUAL_APPROVAL
+? "✅ Order <span style='color:#00ffcc'>DISETUJUI</span>"
+: "❌ Link<span style='color:#ff6b6b'>TIDAK DISETUJUI</span> <p>upgrade untuk dapat menggunakan layanan</p>";
+}
+
 </script>
 
 </body>
